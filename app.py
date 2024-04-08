@@ -11,6 +11,9 @@ gas = pd.DataFrame({'Month': ['january','february','march','april','may','june',
 water = pd.DataFrame({'Month': ['january','february','march','april','may','june','july','august','september','october','november','december'],
                            'Consumption': [75, 75, 77, 78, 77, 80, 82, 85, 82, 81, 86, 75]})
 
+
+consumption_data = {'Electricity': electricity_daily,'Gas':gas_daily,'Water': water_daily}
+
 # Function to generate random daily consumption data for each month
 def generate_daily_consumption(months, mean_consumption, std_dev):
     data = {}
@@ -255,8 +258,7 @@ def main():
         st.title('Bilan des Consommations Energétiques et Equivalent Co2 émis par le site')
         st.subheader('Scenario sur un site de 70000 mètre carré de surfaces cumulées')
       
-        # Récupérer les données de consommation depuis le backend
-         consumption_data = {'Electricity': electricity_daily,'Gas':gas_daily,'Water': water_daily}
+              
                     
         # Dictionnaire pour les unités de mesure de chaque ressource
         unit_of_measure = {'electricity': 'kWh', 'gas': 'm³', 'water': 'm³'}
