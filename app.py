@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
+import calendar
+from calendar import monthrange
 
 # Monthly consumption data
 electricity = pd.DataFrame({'Month': ['january','february','march','april','may','june','july','august','september','october','november','december'],
