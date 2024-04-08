@@ -247,9 +247,8 @@ def main():
     # Récupérer les données de consommation depuis le backend
     elif choice == "Visu Conso Energies(Elec/Gaz/Eau)":
         st.title('Consumption Analysis')
-        
         data= {'Electricity': electricity_daily,'Gas':gas_daily,'Water': water_daily}
-           
+          
         visualize_consumption(data)
               
     elif choice == "Bilan Conso Energies(Elec/Gaz/Eau)":
