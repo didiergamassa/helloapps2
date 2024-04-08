@@ -25,20 +25,12 @@ electricity_daily = {key: value.tolist() for key, value in generate_daily_consum
 gas_daily = {key: value.tolist() for key, value in generate_daily_consumption(gas_data['Month'], mean_consumption=2000, std_dev=500).items()}
 water_daily = {key: value.tolist() for key, value in generate_daily_consumption(water_data['Month'], mean_consumption=50, std_dev=10).items()}
 
-
+consumption_data = {'Electricity': electricity_daily,'Gas':gas_daily,'Water': water_daily}
 
 import datetime
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Replace with your Heroku app URL
-
-# Adresse du backend Flask
-BACKEND_URL="https://backendener-8840ad7ad582.herokuapp.com"
-
-# Récupérer les données de consommation depuis le backend
-def get_consumption_data(resource):
-    response = requests.get(f"{BACKEND_URL}/{resource}")
-    return response.json()
 
 # Tarifs unitaires en euros/kWh
 unit_costs = {'electricity': 0.27, 'gas': 0.0913, 'water': 4.34}
@@ -256,8 +248,7 @@ def main():
     elif choice == "Visu Conso Energies(Elec/Gaz/Eau)":
         st.title('Consumption Analysis')
         
-        response = requests.get("https://backendener-8840ad7ad582.herokuapp.com/daily_consumption_data")
-        data = response.json()
+        data= {'Electricity': electricity_daily,'Gas':gas_daily,'Water': water_daily}
            
         visualize_consumption(data)
               
@@ -266,7 +257,7 @@ def main():
         st.subheader('Scenario sur un site de 70000 mètre carré de surfaces cumulées')
       
         # Récupérer les données de consommation depuis le backend
-        consumption_data = {resource: get_consumption_data(resource) for resource in ['electricity', 'gas', 'water']}
+         consumption_data = {'Electricity': electricity_daily,'Gas':gas_daily,'Water': water_daily}
                     
         # Dictionnaire pour les unités de mesure de chaque ressource
         unit_of_measure = {'electricity': 'kWh', 'gas': 'm³', 'water': 'm³'}
