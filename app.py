@@ -12,7 +12,6 @@ water = pd.DataFrame({'Month': ['january','february','march','april','may','june
                            'Consumption': [75, 75, 77, 78, 77, 80, 82, 85, 82, 81, 86, 75]})
 
 
-consumption_data = {'Electricity': electricity_daily,'Gas':gas_daily,'Water': water_daily}
 
 # Function to generate random daily consumption data for each month
 def generate_daily_consumption(months, mean_consumption, std_dev):
