@@ -3,6 +3,30 @@ import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# Monthly consumption data
+electricity = pd.DataFrame({'Month': ['january','february','march','april','may','june','july','august','september','october','november','december'],
+                                 'Consumption': [127000, 124000, 123000, 122000, 169000, 229000, 224000, 225000, 226000, 187000, 125000, 129000]})
+gas = pd.DataFrame({'Month': ['january','february','march','april','may','june','july','august','september','october','november','december'],
+                         'Consumption': [483470, 482500, 483400, 445000, 425000, 317000, 315000, 314000, 370000, 475000, 485000, 480000]})
+water = pd.DataFrame({'Month': ['january','february','march','april','may','june','july','august','september','october','november','december'],
+                           'Consumption': [75, 75, 77, 78, 77, 80, 82, 85, 82, 81, 86, 75]})
+
+# Function to generate random daily consumption data for each month
+def generate_daily_consumption(months, mean_consumption, std_dev):
+    data = {}
+    for month in months:
+        year = 2023
+        num_days = monthrange(year, list(calendar.month_name).index(month.capitalize()))[1]  # Get the number of days in the month
+        data[month] = np.random.normal(mean_consumption, std_dev, num_days).astype(int)
+    return data
+
+# Calculate daily consumption
+electricity_daily = {key: value.tolist() for key, value in generate_daily_consumption(electricity_data['Month'], mean_consumption=4000, std_dev=1000).items()}
+gas_daily = {key: value.tolist() for key, value in generate_daily_consumption(gas_data['Month'], mean_consumption=2000, std_dev=500).items()}
+water_daily = {key: value.tolist() for key, value in generate_daily_consumption(water_data['Month'], mean_consumption=50, std_dev=10).items()}
+
+
+
 import datetime
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
