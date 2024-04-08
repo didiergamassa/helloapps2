@@ -23,9 +23,9 @@ def generate_daily_consumption(months, mean_consumption, std_dev):
     return data
 
 # Calculate daily consumption
-electricity_daily = {key: value.tolist() for key, value in generate_daily_consumption(electricity_data['Month'], mean_consumption=4000, std_dev=1000).items()}
-gas_daily = {key: value.tolist() for key, value in generate_daily_consumption(gas_data['Month'], mean_consumption=2000, std_dev=500).items()}
-water_daily = {key: value.tolist() for key, value in generate_daily_consumption(water_data['Month'], mean_consumption=50, std_dev=10).items()}
+electricity_daily = {key: value.tolist() for key, value in generate_daily_consumption(electricity['Month'], mean_consumption=4000, std_dev=1000).items()}
+gas_daily = {key: value.tolist() for key, value in generate_daily_consumption(gas['Month'], mean_consumption=2000, std_dev=500).items()}
+water_daily = {key: value.tolist() for key, value in generate_daily_consumption(water['Month'], mean_consumption=50, std_dev=10).items()}
 
 consumption_data = {'Electricity': electricity_daily,'Gas':gas_daily,'Water': water_daily}
 
